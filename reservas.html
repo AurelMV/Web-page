@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Gestión Hotelera</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar superior -->
+    <nav class="top-navbar">
+      <div class="hotel-name">Hotel Amankay</div>
+      <div class="user-info">
+        <span>Bienvenido, Admin</span>
+        <button class="logout-btn">Cerrar Sesión</button>
+      </div>
+    </nav>
+
+    <!-- Información de usuario actual -->
+    <div class="current-user">USUARIO: ADMIN</div>
+
+    <!-- Botón hamburguesa para menú móvil -->
+    <div class="menu-toggle">☰ Menú</div>
+
+    <!-- Contenedor principal que engloba sidebar y contenido -->
+    <div class="main-container">
+      <!-- Menú lateral -->
+      <div class="sidebar">
+        <div class="menu-item">Estadística</div>
+        <div class="menu-item">Gestion de Habitaciones</div>
+        <div onclick="location.href='index.html'" class="menu-item">
+          Gestion Usuarios
+        </div>
+        <div class="menu-item">Gestion de reservas</div>
+        <div class="menu-item">Reporte del Sistema</div>
+        <div class="menu-item">Configuraciones Generales</div>
+      </div>
+
+      <!-- Contenido principal -->
+      <div class="main-content">
+        <h1 class="content-header">Gestion de Reservas</h1>
+
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Reserva</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01</td>
+              <td>Reserva1</td>
+              <td>
+                <button class="view-btn">Ver</button>
+                <button class="view-btn">Editar</button>
+                <button class="view-btn">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td>Reserva2</td>
+              <td>
+                <button class="view-btn">Ver</button>
+                <button class="view-btn">Editar</button>
+                <button class="view-btn">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td>03</td>
+              <td>Reserva3</td>
+              <td>
+                <button class="view-btn">Ver</button>
+                <button class="view-btn">Editar</button>
+                <button class="view-btn">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td>04</td>
+              <td>Reserva4</td>
+              <td>
+                <button class="view-btn">Ver</button>
+                <button class="view-btn">Editar</button>
+                <button class="view-btn">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td>05</td>
+              <td>Reserva5</td>
+              <td>
+                <button class="view-btn">Ver</button>
+                <button class="view-btn">Editar</button>
+                <button class="view-btn">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Hotel Amankay - Sistema de Gestión</p>
+      <p>Todos los derechos reservados</p>
+      <div class="links">
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Soporte Técnico</a>
+      </div>
+    </footer>
+
+    <!-- Script para controlar el menú responsive -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const sidebar = document.querySelector(".sidebar");
+
+        menuToggle.addEventListener("click", function () {
+          sidebar.classList.toggle("show");
+        });
+
+        // Cerrar menú al hacer click en una opción (en móviles)
+        const menuItems = document.querySelectorAll(".menu-item");
+        menuItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (window.innerWidth < 1024) {
+              sidebar.classList.remove("show");
+            }
+          });
+        });
+
+        // Ajustar según el tamaño de pantalla inicial
+        function checkScreenSize() {
+          if (window.innerWidth >= 1024) {
+            sidebar.classList.add("show");
+          } else {
+            sidebar.classList.remove("show");
+          }
+        }
+
+        // Comprobar al cargar y al cambiar el tamaño
+        checkScreenSize();
+        window.addEventListener("resize", checkScreenSize);
+      });
+    </script>
+  </body>
+</html>
