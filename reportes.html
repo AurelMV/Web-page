@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Gestión Hotelera - Reportes</title>
+    <link rel="stylesheet" href="reportes.css" />
+  </head>
+  <body>
+    <!-- Navbar superior -->
+    <nav class="top-navbar">
+      <div class="hotel-name">Hotel AMANKAY</div>
+      <div class="user-info">
+        <span>Bienvenido Admin</span>
+        <button class="logout-btn">Cerrar Sesión</button>
+      </div>
+    </nav>
+
+    <!-- Información de usuario actual -->
+    <div class="current-user">USUARIO:*********</div>
+
+    <!-- Botón hamburguesa para menú móvil -->
+    <div class="menu-toggle">☰ Menú</div>
+
+    <!-- Contenedor principal que engloba sidebar y contenido -->
+    <div class="main-container">
+      <!-- Menú lateral -->
+      <div class="sidebar">
+        <div class="menu-item">Estadística</div>
+        <div class="menu-item">Gestion de Habitaciones</div>
+        <div onclick="location.href='index.html'" class="menu-item">
+          Gestion de Usuarios
+        </div>
+        <div onclick="location.href='reservas.html'" class="menu-item">
+          Gestion de Reservas
+        </div>
+        <div onclick="location.href='reportes.html'" class="menu-item">
+          Reporte del Sistema
+        </div>
+        <div onclick="location.href='configuraciones.html'" class="menu-item">
+          Configuraciones Generales
+        </div>
+      </div>
+
+      <!-- Contenido principal -->
+      <div class="main-content">
+        <div class="content-header">
+          <h1>Reporte del Sistema</h1>
+          <button class="print-btn">Imprimir</button>
+        </div>
+
+        <!-- Resumen de estadísticas -->
+        <div class="stats-summary">
+          <div class="stat-card">
+            <div class="stat-number">24</div>
+            <div class="stat-label">Total Reservas</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">18</div>
+            <div class="stat-label">Ocupadas</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Cancelaciones</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">$4,250</div>
+            <div class="stat-label">Ingresos</div>
+          </div>
+        </div>
+
+        <!-- Pestañas de navegación -->
+        <div class="tabs-container">
+          <div class="tabs">
+            <button class="tab active" onclick="showTab('ingresos')">
+              Ingresos
+            </button>
+            <button class="tab" onclick="showTab('ocupaciones')">
+              Ocupaciones
+            </button>
+            <button class="tab" onclick="showTab('cancelaciones')">
+              Cancelaciones
+            </button>
+          </div>
+
+          <!-- Contenido de Ingresos -->
+          <div id="ingresos" class="tab-content active">
+            <h3>Reporte de Ingresos</h3>
+            <div class="table-container">
+              <table class="report-table">
+                <thead>
+                  <tr>
+                    <th>CODE</th>
+                    <th>Reservas</th>
+                    <th>Estado</th>
+                    <th>Monto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>01</td>
+                    <td>Reserva1</td>
+                    <td>Pagado</td>
+                    <td>$150</td>
+                  </tr>
+                  <tr>
+                    <td>02</td>
+                    <td>Reserva2</td>
+                    <td>Pagado</td>
+                    <td>$200</td>
+                  </tr>
+                  <tr>
+                    <td>03</td>
+                    <td>Reserva3</td>
+                    <td>Pendiente</td>
+                    <td>$180</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Contenido de Ocupaciones -->
+          <div id="ocupaciones" class="tab-content">
+            <h3>Reporte de Ocupaciones</h3>
+            <div class="table-container">
+              <table class="report-table">
+                <thead>
+                  <tr>
+                    <th>CODE</th>
+                    <th>Reservas</th>
+                    <th>Estado</th>
+                    <th>Habitación</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>01</td>
+                    <td>Reserva1</td>
+                    <td>Ocupado</td>
+                    <td>101</td>
+                  </tr>
+                  <tr>
+                    <td>02</td>
+                    <td>Reserva2</td>
+                    <td>Ocupado</td>
+                    <td>102</td>
+                  </tr>
+                  <tr>
+                    <td>03</td>
+                    <td>Reserva3</td>
+                    <td>Check-out</td>
+                    <td>103</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Contenido de Cancelaciones -->
+          <div id="cancelaciones" class="tab-content">
+            <h3>Reporte de Cancelaciones</h3>
+            <div class="table-container">
+              <table class="report-table">
+                <thead>
+                  <tr>
+                    <th>CODE</th>
+                    <th>Reservas</th>
+                    <th>Estado</th>
+                    <th>Fecha Cancelación</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>04</td>
+                    <td>Reserva4</td>
+                    <td>Cancelado</td>
+                    <td>2025-05-20</td>
+                  </tr>
+                  <tr>
+                    <td>05</td>
+                    <td>Reserva5</td>
+                    <td>Cancelado</td>
+                    <td>2025-05-19</td>
+                  </tr>
+                  <tr>
+                    <td>06</td>
+                    <td>Reserva6</td>
+                    <td>Cancelado</td>
+                    <td>2025-05-18</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Hotel Amankay - Sistema de Gestión</p>
+      <p>Todos los derechos reservados</p>
+      <div class="links">
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Soporte Técnico</a>
+      </div>
+    </footer>
+
+    <!-- Script para controlar el menú responsive y las pestañas -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const sidebar = document.querySelector(".sidebar");
+
+        menuToggle.addEventListener("click", function () {
+          sidebar.classList.toggle("show");
+        });
+
+        // Cerrar menú al hacer click en una opción (en móviles)
+        const menuItems = document.querySelectorAll(".menu-item");
+        menuItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (window.innerWidth < 1024) {
+              sidebar.classList.remove("show");
+            }
+          });
+        });
+
+        // Ajustar según el tamaño de pantalla inicial
+        function checkScreenSize() {
+          if (window.innerWidth >= 1024) {
+            sidebar.classList.add("show");
+          } else {
+            sidebar.classList.remove("show");
+          }
+        }
+
+        // Comprobar al cargar y al cambiar el tamaño
+        checkScreenSize();
+        window.addEventListener("resize", checkScreenSize);
+      });
+
+      // Función para mostrar las pestañas
+      function showTab(tabName) {
+        // Ocultar todas las pestañas
+        const tabContents = document.querySelectorAll(".tab-content");
+        tabContents.forEach((content) => {
+          content.classList.remove("active");
+        });
+
+        // Remover clase active de todas las pestañas
+        const tabs = document.querySelectorAll(".tab");
+        tabs.forEach((tab) => {
+          tab.classList.remove("active");
+        });
+
+        // Mostrar la pestaña seleccionada
+        document.getElementById(tabName).classList.add("active");
+
+        // Activar la pestaña clickeada
+        event.target.classList.add("active");
+      }
+
+      // Función para imprimir
+      document
+        .querySelector(".print-btn")
+        .addEventListener("click", function () {
+          window.print();
+        });
+    </script>
+  </body>
+</html>

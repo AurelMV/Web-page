@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Gestión Hotelera - Configuraciones</title>
+    <link rel="stylesheet" href="configuraciones.css" />
+  </head>
+  <body>
+    <!-- Navbar superior -->
+    <nav class="top-navbar">
+      <div class="hotel-name">Hotel AMANKAY</div>
+      <div class="user-info">
+        <span>Bienvenido Admin</span>
+        <button class="logout-btn">Cerrar Sesión</button>
+      </div>
+    </nav>
+
+    <!-- Información de usuario actual -->
+    <div class="current-user">USUARIO:*********</div>
+
+    <!-- Botón hamburguesa para menú móvil -->
+    <div class="menu-toggle">☰ Menú</div>
+
+    <!-- Contenedor principal que engloba sidebar y contenido -->
+    <div class="main-container">
+      <!-- Menú lateral -->
+      <div class="sidebar">
+        <div class="menu-item">Estadística</div>
+        <div class="menu-item">Gestion de Habitaciones</div>
+        <div onclick="location.href='index.html'" class="menu-item">
+          Gestion de Usuarios
+        </div>
+        <div onclick="location.href='reservas.html'" class="menu-item">
+          Gestion de Reservas
+        </div>
+        <div onclick="location.href='reportes.html'" class="menu-item">
+          Reporte del Sistema
+        </div>
+        <div onclick="location.href='configuraciones.html'" class="menu-item">
+          Configuraciones Generales
+        </div>
+      </div>
+
+      <!-- Contenido principal -->
+      <div class="main-content">
+        <div class="content-header">
+          <h1>Configuraciones Generales</h1>
+          <button class="save-btn" onclick="saveConfig()">
+            Guardar Cambios
+          </button>
+        </div>
+
+        <!-- Alerta de éxito (oculta por defecto) -->
+        <div
+          id="success-alert"
+          class="alert alert-success"
+          style="display: none"
+        >
+          ¡Configuraciones guardadas exitosamente!
+        </div>
+
+        <!-- Pestañas de navegación -->
+        <div class="tabs-container">
+          <div class="tabs">
+            <button class="tab active" onclick="showTab('precios')">
+              Precios
+            </button>
+            <button class="tab" onclick="showTab('promociones')">
+              Promociones
+            </button>
+            <button class="tab" onclick="showTab('reglas')">Reglas</button>
+            <button class="tab" onclick="showTab('sistema')">Sistema</button>
+          </div>
+
+          <!-- Contenido de Precios -->
+          <div id="precios" class="tab-content active">
+            <h3>Configuración de Precios</h3>
+
+            <div class="config-form">
+              <h4>Precios por Tipo de Habitación</h4>
+              <div class="table-container">
+                <table class="config-table">
+                  <thead>
+                    <tr>
+                      <th>Tipo de Habitación</th>
+                      <th>Precio Base</th>
+                      <th>Precio Fin de Semana</th>
+                      <th>Precio Temporada Alta</th>
+                      <th>Acción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Habitación Simple</td>
+                      <td>
+                        <input type="number" value="120" min="0" step="0.01" />
+                      </td>
+                      <td>
+                        <input type="number" value="150" min="0" step="0.01" />
+                      </td>
+                      <td>
+                        <input type="number" value="180" min="0" step="0.01" />
+                      </td>
+                      <td>
+                        <button class="btn btn-primary btn-sm">
+                          Actualizar
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Habitación Doble</td>
+                      <td>
+                        <input type="number" value="180" min="0" step="0.01" />
+                      </td>
+                      <td>
+                        <input type="number" value="220" min="0" step="0.01" />
+                      </td>
+                      <td>
+                        <input type="number" value="260" min="0" step="0.01" />
+                      </td>
+                      <td>
+                        <button class="btn btn-primary btn-sm">
+                          Actualizar
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Suite</td>
+                      <td>
+                        <input type="number" value="300" min="0" step="0.01" />
+                      </td>
+                      <td>
+                        <input type="number" value="380" min="0" step="0.01" />
+                      </td>
+                      <td>
+                        <input type="number" value="450" min="0" step="0.01" />
+                      </td>
+                      <td>
+                        <button class="btn btn-primary btn-sm">
+                          Actualizar
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="config-form">
+              <h4>Servicios Adicionales</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Desayuno</label>
+                  <input type="number" value="15" min="0" step="0.01" />
+                </div>
+                <div class="form-group">
+                  <label>WiFi Premium</label>
+                  <input type="number" value="5" min="0" step="0.01" />
+                </div>
+                <div class="form-group">
+                  <label>Parking</label>
+                  <input type="number" value="10" min="0" step="0.01" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contenido de Promociones -->
+          <div id="promociones" class="tab-content">
+            <h3>Gestión de Promociones</h3>
+
+            <div class="config-form">
+              <h4>Crear Nueva Promoción</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Nombre de la Promoción</label>
+                  <input type="text" placeholder="Ej: Descuento Verano 2025" />
+                </div>
+                <div class="form-group">
+                  <label>Descuento (%)</label>
+                  <input type="number" min="0" max="100" step="1" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Fecha Inicio</label>
+                  <input type="date" />
+                </div>
+                <div class="form-group">
+                  <label>Fecha Fin</label>
+                  <input type="date" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Descripción</label>
+                <textarea
+                  placeholder="Describe los términos y condiciones de la promoción"
+                ></textarea>
+              </div>
+              <div class="action-buttons">
+                <button class="btn btn-success">Crear Promoción</button>
+                <button class="btn btn-warning">Previsualizar</button>
+              </div>
+            </div>
+
+            <div class="config-cards">
+              <div class="config-card">
+                <h4>Promoción Actual: Descuento Primavera</h4>
+                <p>20% de descuento en estancias de 3 noches o más</p>
+                <p><strong>Válida hasta:</strong> 31 de Mayo 2025</p>
+                <div class="action-buttons">
+                  <button class="btn btn-primary">Editar</button>
+                  <button class="btn btn-danger">Desactivar</button>
+                </div>
+              </div>
+
+              <div class="config-card">
+                <h4>Promoción: Weekend Especial</h4>
+                <p>15% de descuento en fines de semana</p>
+                <p><strong>Estado:</strong> Activa</p>
+                <div class="action-buttons">
+                  <button class="btn btn-primary">Editar</button>
+                  <button class="btn btn-danger">Desactivar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contenido de Reglas -->
+          <div id="reglas" class="tab-content">
+            <h3>Reglas y Políticas</h3>
+
+            <div class="config-form">
+              <h4>Políticas de Reserva</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Tiempo mínimo de reserva (horas)</label>
+                  <input type="number" value="24" min="1" />
+                </div>
+                <div class="form-group">
+                  <label>Estancia mínima (noches)</label>
+                  <input type="number" value="1" min="1" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Check-in</label>
+                  <input type="time" value="14:00" />
+                </div>
+                <div class="form-group">
+                  <label>Check-out</label>
+                  <input type="time" value="11:00" />
+                </div>
+              </div>
+            </div>
+
+            <div class="config-form">
+              <h4>Políticas de Cancelación</h4>
+              <div class="form-group">
+                <label>Política de Cancelación Estándar</label>
+                <select>
+                  <option value="flexible">
+                    Flexible - Cancelación gratuita 24h antes
+                  </option>
+                  <option value="moderada">
+                    Moderada - Cancelación gratuita 48h antes
+                  </option>
+                  <option value="estricta">
+                    Estricta - Cancelación gratuita 7 días antes
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Penalización por cancelación tardía (%)</label>
+                <input type="number" value="50" min="0" max="100" />
+              </div>
+            </div>
+
+            <div class="config-form">
+              <h4>Reglas del Hotel</h4>
+              <div class="form-group">
+                <label>Número máximo de huéspedes adicionales</label>
+                <input type="number" value="2" min="0" />
+              </div>
+              <div class="form-group">
+                <label>Se permiten mascotas</label>
+                <select>
+                  <option value="si">Sí</option>
+                  <option value="no">No</option>
+                  <option value="consultar">Consultar</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Reglas adicionales</label>
+                <textarea placeholder="Ingrese reglas adicionales del hotel">
+No se permite fumar en las habitaciones
+Horario de silencio: 22:00 - 08:00
+Máximo 4 personas por habitación doble</textarea
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Contenido de Sistema -->
+          <div id="sistema" class="tab-content">
+            <h3>Configuración del Sistema</h3>
+
+            <div class="config-form">
+              <h4>Información del Hotel</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Nombre del Hotel</label>
+                  <input type="text" value="Hotel AMANKAY" />
+                </div>
+                <div class="form-group">
+                  <label>Email de Contacto</label>
+                  <input type="email" value="info@hotelamankay.com" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Teléfono</label>
+                  <input type="tel" value="+1 234-567-8900" />
+                </div>
+                <div class="form-group">
+                  <label>Sitio Web</label>
+                  <input type="url" value="www.hotelamankay.com" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Dirección</label>
+                <textarea>
+123 Calle Principal
+Ciudad Turística, Estado
+Código Postal 12345</textarea
+                >
+              </div>
+            </div>
+
+            <div class="config-form">
+              <h4>Configuración Regional</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Moneda</label>
+                  <select>
+                    <option value="USD">USD - Dólar Americano</option>
+                    <option value="EUR">EUR - Euro</option>
+                    <option value="MXN">MXN - Peso Mexicano</option>
+                    <option value="COP">COP - Peso Colombiano</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Zona Horaria</label>
+                  <select>
+                    <option value="UTC-5">UTC-5 (América/Bogotá)</option>
+                    <option value="UTC-6">UTC-6 (América/México)</option>
+                    <option value="UTC-3">UTC-3 (América/Argentina)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Idioma del Sistema</label>
+                <select>
+                  <option value="es">Español</option>
+                  <option value="en">English</option>
+                  <option value="pt">Português</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="config-form">
+              <h4>Notificaciones</h4>
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" checked /> Notificar nuevas reservas
+                  por email
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" checked /> Notificar cancelaciones
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" /> Enviar recordatorios de check-in
+                </label>
+              </div>
+              <div class="form-group">
+                <label>Email para notificaciones</label>
+                <input type="email" value="admin@hotelamankay.com" />
+              </div>
+            </div>
+
+            <div class="config-form">
+              <h4>Respaldo y Mantenimiento</h4>
+              <div class="action-buttons">
+                <button class="btn btn-primary">Crear Respaldo</button>
+                <button class="btn btn-warning">Limpiar Logs</button>
+                <button class="btn btn-danger">Reiniciar Sistema</button>
+              </div>
+              <div class="alert alert-warning" style="margin-top: 15px">
+                <strong>Atención:</strong> El reinicio del sistema puede tardar
+                algunos minutos. Asegúrese de guardar todos los cambios antes de
+                proceder.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Hotel Amankay - Sistema de Gestión</p>
+      <p>Todos los derechos reservados</p>
+      <div class="links">
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Soporte Técnico</a>
+      </div>
+    </footer>
+
+    <!-- Script para controlar el menú responsive y las pestañas -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const sidebar = document.querySelector(".sidebar");
+
+        menuToggle.addEventListener("click", function () {
+          sidebar.classList.toggle("show");
+        });
+
+        // Cerrar menú al hacer click en una opción (en móviles)
+        const menuItems = document.querySelectorAll(".menu-item");
+        menuItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (window.innerWidth < 1024) {
+              sidebar.classList.remove("show");
+            }
+          });
+        });
+
+        // Ajustar según el tamaño de pantalla inicial
+        function checkScreenSize() {
+          if (window.innerWidth >= 1024) {
+            sidebar.classList.add("show");
+          } else {
+            sidebar.classList.remove("show");
+          }
+        }
+
+        // Comprobar al cargar y al cambiar el tamaño
+        checkScreenSize();
+        window.addEventListener("resize", checkScreenSize);
+      });
+
+      // Función para mostrar las pestañas
+      function showTab(tabName) {
+        // Ocultar todas las pestañas
+        const tabContents = document.querySelectorAll(".tab-content");
+        tabContents.forEach((content) => {
+          content.classList.remove("active");
+        });
+
+        // Remover clase active de todas las pestañas
+        const tabs = document.querySelectorAll(".tab");
+        tabs.forEach((tab) => {
+          tab.classList.remove("active");
+        });
+
+        // Mostrar la pestaña seleccionada
+        document.getElementById(tabName).classList.add("active");
+
+        // Activar la pestaña clickeada
+        event.target.classList.add("active");
+      }
+
+      // Función para guardar configuraciones
+      function saveConfig() {
+        // Simular guardado
+        const successAlert = document.getElementById("success-alert");
+        successAlert.style.display = "block";
+
+        // Ocultar alerta después de 3 segundos
+        setTimeout(() => {
+          successAlert.style.display = "none";
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
